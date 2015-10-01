@@ -1,0 +1,9 @@
+<resources>
+    <!-- the theme applied to the application or activity -->
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+    </style>
+
+</resources>
