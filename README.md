@@ -1,4 +1,4 @@
-#Privacy friendly QR Scanner
-The Privacy friendly QR Scanner belongs to the group of Privacy Friendly Apps. The app supports its users in detecting malicious links: QR Codes provide new possibilities for an attacker, as QR Codes can contain malicious links, i.e. links to phishing webpages or webpages from which malware would automatically be downloaded. Therefore it is important to carefully check the link before accessing the corresponding webpage.
+#Privacy friendly Torchlight
+Privacy Friendly Torchlight is a very simple application to use the phones flash light and belongs to the group of Privacy Friendly Apps. 
 
-This app is optimized regarding the user's privacy. It only uses the device's camera in order to decode QR codes and barcodes.
+This app is optimized regarding the user's privacy. It doesn't use any tracking mechanisms, neither it displays any advertisement. It only uses one permission: Camera in order to use the phone's camera flash light.
