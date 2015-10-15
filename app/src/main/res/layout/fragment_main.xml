@@ -33,7 +33,8 @@
         android:gravity="fill_horizontal"
         android:layout_below="@+id/btnSwitch"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp" />
 
     <CheckBox
         android:layout_width="wrap_content"

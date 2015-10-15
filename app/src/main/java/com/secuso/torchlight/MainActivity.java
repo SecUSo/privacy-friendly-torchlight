@@ -11,15 +11,17 @@ import android.hardware.Camera.Parameters;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 
-    private boolean flashState;
+    private boolean flashState = false;
     private ImageButton btnSwitch;
     private boolean endWhenPaused;
     private SharedPreferences preferences;
@@ -65,25 +67,18 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     protected void onPause() {
-        if(flashState && endWhenPaused){
-            close();
-            btnSwitch.setImageDrawable(getResources().getDrawable(R.drawable.off));
-        }
-        else if(!flashState)
-            camera.release();
         super.onPause();
     }
-
 
     private void init() {
         Context context = this;
         PackageManager pm = context.getPackageManager();
 
-        flashState = false;
-
         // if device support camera?
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA) | !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
             Log.e("err", "Device has no camera!");
+            Toast.makeText(this, R.string.no_flash,Toast.LENGTH_LONG);
+            btnSwitch.setEnabled(false);
             return;
         }
 
@@ -120,31 +115,53 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if(endWhenPaused) {
-            camera.release();
-            isConnected = false;
+        if(!flashState)
+            close();
+        else if(endWhenPaused) {
+            stop();
         }
     }
 
-    private void close(){
+    private void stop(){
         p.setFlashMode(Parameters.FLASH_MODE_OFF);
         camera.setParameters(p);
         camera.stopPreview();
         flashState = false;
         isConnected = false;
         camera.release();
+        camera = null;
+    }
+
+    private void close(){
+        flashState = false;
+        if(isConnected)
+            camera.release();
+        isConnected = false;
+        camera = null;
     }
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        close();
+        moveTaskToBack(true);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            moveTaskToBack(true);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if(!isConnected) init();
+        if(flashState)
+            btnSwitch.setImageDrawable(getResources().getDrawable(R.drawable.on));
+        else
+            btnSwitch.setImageDrawable(getResources().getDrawable(R.drawable.off));
     }
 
     @Override
@@ -159,7 +176,10 @@ public class MainActivity extends ActionBarActivity {
             case R.id.action_about:
                 Intent intent = new Intent();
                 intent.setClass(this, AboutActivity.class);
-                close();
+                if(flashState)
+                    stop();
+                else
+                    close();
                 startActivityForResult(intent, 0);
                 return true;
             default:

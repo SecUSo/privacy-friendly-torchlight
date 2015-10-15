@@ -3,8 +3,10 @@
 
     <string name="version_number">Version 1.0</string>
 
+    <string name="no_flash">This device does not have a flash light.</string>
+
     <string name="description">In order to turn the Light on/off, press the button above.</string>
-    <string name="pause">turn off on app minimize</string>
+    <string name="pause">turn off on app minimize or standby</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -17,4 +19,5 @@
     <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps.</string>
     <string name="more_info">More information can be found on:</string>
     <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/">https://www.secuso.org</a></string>
+    <string name="app_name_long">Privacy friendly Torchlight</string>
 </resources>

@@ -3,8 +3,10 @@
 
     <string name="version_number">Version 1.0</string>
 
+    <string name="no_flash">Dieses Gerät besitzt kein Kameralicht.</string>
+
     <string name="description">Um das Licht ein/aus zu schalten, berühren Sie die obige Fläche.</string>
-    <string name="pause">Ausschalten beim Minimieren der App</string>
+    <string name="pause">Ausschalten beim Minimieren der App oder Standby</string>
 
     <string name="hello_world">Hallo Welt!</string>
     <string name="action_settings">Einstellungen</string>
@@ -17,4 +19,5 @@
     <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps.</string>
     <string name="more_info">Mehr Informationen unter:</string>
     <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/">https://www.secuso.org</a></string>
+    <string name="app_name_long">Privacy friendly Torchlight</string>
 </resources>
