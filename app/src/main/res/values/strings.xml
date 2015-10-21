@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Torchlight</string>
 
-    <string name="version_number">Version 1.0</string>
+    <string name="version_number">Version 1.1</string>
 
     <string name="no_flash">This device does not have a flash light.</string>
 

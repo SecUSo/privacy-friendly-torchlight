@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Taschenlampe</string>
 
-    <string name="version_number">Version 1.0</string>
+    <string name="version_number">Version 1.1</string>
 
     <string name="no_flash">Dieses Gerät besitzt kein Kameralicht.</string>
 
