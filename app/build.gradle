@@ -4,7 +4,7 @@ android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
     defaultConfig {
-        applicationId "com.secuso.torchlight"
+        applicationId 'com.secuso.torchlight2'
         minSdkVersion 14
         targetSdkVersion 21
         versionCode 2
@@ -21,6 +21,6 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:22.0.0'
 }

@@ -1,4 +1,4 @@
-package com.secuso.torchlight;
+package com.secuso.torchlight2;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;

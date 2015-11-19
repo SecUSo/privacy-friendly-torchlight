@@ -1,4 +1,4 @@
-package com.secuso.torchlight;
+package com.secuso.torchlight2;
 
 import android.content.Context;
 import android.content.Intent;
