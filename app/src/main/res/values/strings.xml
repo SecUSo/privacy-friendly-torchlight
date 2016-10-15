@@ -1,23 +1,40 @@
 <resources>
     <string name="app_name">Torchlight</string>
 
-    <string name="version_number">Version 1.1</string>
-
     <string name="no_flash">This device does not have a flash light.</string>
 
     <string name="description">In order to turn the Light on/off, press the button above.</string>
     <string name="pause">turn off on app minimize or standby</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
-    <string name="about_author">Author: Philipp Rack</string>
-    <string name="about_affiliation">In affiliation with:</string>
+    <string name="app_name_long">Privacy Friendly Torchlight</string>
+    <string name="okay">Okay</string>
+    <string name="viewhelp">View Help</string>
+    <string name="action_help">Help</string>
+    <string name="action_about">About</string>
+    <string name="welcome">Welcome</string>
+    <string name="navigation_drawer_open" translatable="false">open</string>
+    <string name="navigation_drawer_close" translatable="false">close</string>
 
+    <!--###HELP###-->
+    <string name="help">General</string>
+    <string name="help_privacy_heading">Privacy Info</string>
+    <string name="help_permissions_heading">Camera permission</string>
+    <string name="help_permissions_description">The camera permission is needed to control the camera flashlight. If this permission is not given, the app will not operate properly.</string>
+    <string name="help_intro">This is a very simple application to control your phone\'s flashlight. Tap the button on the starting screen to toggle it on and off.</string>
+
+    <!--###ABOUT###-->
     <string name="about">About</string>
-
-    <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps.</string>
+    <string name="version_number">Version 2.0</string>
+    <string name="about_author">Authors: </string>
+    <string name="about_author_names" translatable="false">Philipp Rack</string>
+    <string name="about_author_contributors">and contributors.</string>
+    <string name="about_affiliation">In affiliation with</string>
+    <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps group developed by Technische Universität Darmstadt. Sourcecode licensed under GPLv3. Images copyright TU Darmstadt and Google Inc.</string>
     <string name="more_info">More information can be found on:</string>
-    <string name="url"><a href="https://www.secuso.informatik.tu-darmstadt.de/en/research/results/">https://www.secuso.org</a></string>
-    <string name="app_name_long">Privacy friendly Torchlight</string>
+    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-torchlight">Github-Repo</a></string>
+    <string name="url" translatable="false"><a href="https://www.secuso.org/pfa">SECUSO-Website</a></string>
+    <string name="welcome_text">Click the flashlight button to toggle your phone\'s light on and off.</string>
+
 </resources>
