@@ -15,18 +15,8 @@
         android:icon="@mipmap/ic_launcher_pfa"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".ui.SplashActivity"
         android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ui.MainActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
