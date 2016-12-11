@@ -9,12 +9,16 @@ Privacy Friendly Torchlight belongs to the group of Privacy Friendly Apps and ha
 
 ## Download and more Information
 
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/repository/browse/?fdfilter=torchlight&fdid=com.secuso.torchlight2)<a href="https://play.google.com/store/apps/details?id=com.secuso.torchlight2"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
+
+### Building
+
 Further development requires Android Studio, we recommend to use at least version 2.1.3
 
 ### API Reference
 
-Mininum SDK: 14
-Target SDK: 23 
+Mininum SDK: 16
+Target SDK: 25 
 
 ## License
 
@@ -26,9 +30,7 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 
 You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
 
-The icons used in the nagivation drawer are licensed under the CC BY 2.5. In addition to them the app uses icons from Google Design Material Icons licensed under Apache License Version 2.0. All other images (the logo of Privacy Friendly Apps, the SECUSO logo and the header in the navigation drawer) copyright Technische Universtität Darmstadt (2016).
-
-The icons ic_trophy_award_black_48dp and ic_trophy_black_48dp are licensed under the Sil Open Font License Version 1.1.
+The icons used in the nagivation drawer are licensed under the CC BY 2.5. In addition to them the app uses icons from Google Design Material Icons licensed under Apache License Version 2.0. All other images (the logo of Privacy Friendly Apps, the SECUSO logo and splash icon) copyright Technische Universtität Darmstadt (2016).
 
 ## Contributors
 
@@ -38,3 +40,4 @@ Markus Hau
 Github-Users: <br />
 p-rack <br />
 Kamuno <br />
+Yonjuni
