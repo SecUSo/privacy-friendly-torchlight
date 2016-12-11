@@ -2,10 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:id="@+id/nav_group_add">
-        <!--<item
-            android:id="@+id/nav_settings"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/action_settings" />-->
         <item
             android:id="@+id/nav_help"
             android:icon="@drawable/ic_menu_help"

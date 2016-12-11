@@ -1,21 +1,23 @@
-package com.secuso.torchlight2;
+package com.secuso.torchlight2.ui;
 
 import android.os.Bundle;
+import android.preference.PreferenceFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.widget.TextView;
+
+import com.secuso.torchlight2.R;
 
 /**
- * Created by Philipp on 28.09.2015.
+ * Created by yonjuni on 17.06.16.
  */
-public class AboutActivity extends AppCompatActivity {
+public class HelpActivity extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+
+        setContentView(R.layout.activity_help);
 
         ActionBar ab = getSupportActionBar();
         if(ab != null) {
@@ -28,9 +30,17 @@ public class AboutActivity extends AppCompatActivity {
             mainContent.animate().alpha(1).setDuration(BaseActivity.MAIN_CONTENT_FADEIN_DURATION);
         }
 
-        ((TextView)findViewById(R.id.secusoWebsite)).setMovementMethod(LinkMovementMethod.getInstance());
-        ((TextView)findViewById(R.id.githubURL)).setMovementMethod(LinkMovementMethod.getInstance());
-
         overridePendingTransition(0, 0);
     }
+
+    public static class HelpFragment extends PreferenceFragment {
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+
+            addPreferencesFromResource(R.xml.help);
+        }
+    }
+
 }

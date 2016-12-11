@@ -1,4 +1,4 @@
-package com.secuso.torchlight2;
+package com.secuso.torchlight2.ui;
 
 import android.Manifest;
 import android.app.Activity;
@@ -6,28 +6,31 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.hardware.Camera;
 import android.hardware.Camera.Parameters;
+import android.hardware.camera2.CameraManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.secuso.torchlight2.R;
+import com.secuso.torchlight2.camera.CameraNormal;
+import com.secuso.torchlight2.camera.ICamera;
+import com.secuso.torchlight2.camera.CameraMarshmallow;
+
+import static android.os.Build.VERSION.SDK_INT;
 
 public class MainActivity extends BaseActivity {
 
@@ -37,9 +40,13 @@ public class MainActivity extends BaseActivity {
     private SharedPreferences preferences;
     private SharedPreferences.Editor prefEditor;
 
+    private CameraManager mCameraManager = null;
+
     private Parameters p;
 
     private Camera camera;
+
+    private ICamera mCamera;
 
     private boolean isConnected;
 
@@ -48,33 +55,33 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         btnSwitch = (ImageButton) findViewById(R.id.btnSwitch);
-        preferences = this.getPreferences(Context.MODE_PRIVATE);
+        preferences = this.getPreferences(MODE_PRIVATE);
         prefEditor = preferences.edit();
         flashState = false;
         endWhenPaused = preferences.getBoolean("closeOnPause", false);
 
         CheckBox pauseState = (CheckBox) findViewById(R.id.cbPause);
-
-        pauseState.setChecked(endWhenPaused);
-
-        pauseState.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                endWhenPaused = !endWhenPaused;
-                prefEditor.putBoolean("closeOnPause", endWhenPaused);
-                prefEditor.commit();
-            }
-        });
-
+        if(pauseState != null) {
+            pauseState.setChecked(endWhenPaused);
+            pauseState.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    endWhenPaused = !endWhenPaused;
+                    prefEditor.putBoolean("closeOnPause", endWhenPaused);
+                    prefEditor.commit();
+                }
+            });
+        }
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedPreferences.edit().putString("firstShow", "").commit();
+        sharedPreferences.edit().putString("firstShow", "").apply();
         SharedPreferences settings = getSharedPreferences("firstShow", getBaseContext().MODE_PRIVATE);
-        if (settings.getBoolean("isFirstRun", true)) {
 
+        if (settings.getBoolean("isFirstRun", true)) {
             WelcomeDialog welcomeDialog = new WelcomeDialog();
             welcomeDialog.show(getFragmentManager(), "WelcomeDialog");
 
@@ -83,7 +90,7 @@ public class MainActivity extends BaseActivity {
             editor.commit();
         }
 
-        if(!isConnected) init();
+        init();
     }
 
     @Override
@@ -92,65 +99,54 @@ public class MainActivity extends BaseActivity {
     }
 
     private void init() {
-        Context context = this;
-        PackageManager pm = context.getPackageManager();
+        PackageManager pm = getPackageManager();
 
         // if device support camera?
         if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA) | !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
             Log.e("err", "Device has no camera!");
-            Toast.makeText(this, R.string.no_flash,Toast.LENGTH_LONG);
+            Toast.makeText(this, R.string.no_flash, Toast.LENGTH_LONG).show();
             btnSwitch.setEnabled(false);
             return;
         }
 
-        if(ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-            try {
-                if(camera == null || !isConnected || p == null) {
-                    camera = Camera.open();
-                    isConnected = true;
-                    p = camera.getParameters();
-                }
-            } catch(RuntimeException e) {
-                Toast.makeText(this, "Can not get the camera" ,Toast.LENGTH_LONG);
-            }
+        // Check Android Version
+        if(SDK_INT >= Build.VERSION_CODES.M) {
+            mCamera = new CameraMarshmallow();
+        } else {
+            mCamera = new CameraNormal();
         }
+
+        // set up camera
+        setUpCamera();
 
         btnSwitch.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
 
-                if (ContextCompat.checkSelfPermission(thisActivity,
-                        Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-
-                    ActivityCompat.requestPermissions(thisActivity, new String[]{Manifest.permission.CAMERA},0) ;
+                // can we have permissions that are revoked?
+                if(SDK_INT >= Build.VERSION_CODES.M) {
+                    // check if we have the permission we need -> if not request it and turn on the light afterwards
+                    if (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(thisActivity, new String[]{Manifest.permission.CAMERA},0);
+                        return;
+                    }
                 }
 
-                if(camera != null) {
-                    toggleCamera();
-                }
-
+                toggleCamera(!flashState);
             }
         });
     }
 
-    private void toggleCamera() {
-        if (flashState) {
-            //"info", "torch is turn off!"
-            p.setFlashMode(Parameters.FLASH_MODE_OFF);
-            camera.setParameters(p);
-            camera.stopPreview();
-            flashState = false;
-            btnSwitch.setImageDrawable(getResources().getDrawable(R.drawable.off));
+    private void setUpCamera() {
+        mCamera.init(this);
+        isConnected = true;
+    }
 
-        } else {
-            //"info", "torch is turn on!"
-            p.setFlashMode(Parameters.FLASH_MODE_TORCH);
-            camera.setParameters(p);
-            camera.startPreview();
-            flashState = true;
-            btnSwitch.setImageDrawable(getResources().getDrawable(R.drawable.on));
+    private void toggleCamera(boolean enable) {
+        if(mCamera.toggle(enable)) {
+            flashState = enable;
+            btnSwitch.setImageResource(enable ? R.drawable.ic_power_on : R.drawable.ic_power_off);
         }
     }
 
@@ -160,18 +156,11 @@ public class MainActivity extends BaseActivity {
             case 0: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    try {
-                        camera = Camera.open();
-                        isConnected = true;
-                        p = camera.getParameters();
-                        toggleCamera();
-                    } catch(RuntimeException e) {
-                        Toast.makeText(this, "An unknown error occured." ,Toast.LENGTH_SHORT).show();
-                    }
+                    // yay, we got the permission -> turn on the light!
+                    toggleCamera(!flashState);
                 } else {
                     Toast.makeText(this, "Can not use flashlight without access to the camera." ,Toast.LENGTH_SHORT).show();
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
+                    // permission denied, boo!
                 }
             }
         }
@@ -188,21 +177,16 @@ public class MainActivity extends BaseActivity {
     }
 
     private void stop(){
-        p.setFlashMode(Parameters.FLASH_MODE_OFF);
-        camera.setParameters(p);
-        camera.stopPreview();
         flashState = false;
         isConnected = false;
-        camera.release();
-        camera = null;
+        mCamera.toggle(false);
+        mCamera.release();
     }
 
     private void close(){
         flashState = false;
-        if(isConnected)
-            camera.release();
         isConnected = false;
-        camera = null;
+        mCamera.release();
     }
 
     @Override
@@ -222,11 +206,16 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(!isConnected) init();
-        if(flashState)
-            btnSwitch.setImageDrawable(getResources().getDrawable(R.drawable.on));
-        else
-            btnSwitch.setImageDrawable(getResources().getDrawable(R.drawable.off));
+
+        if(!isConnected) {
+            init();
+        }
+
+        if(flashState) {
+            btnSwitch.setImageResource(R.drawable.ic_power_on);
+        } else {
+            btnSwitch.setImageResource(R.drawable.ic_power_off);
+        }
     }
 
     @Override
