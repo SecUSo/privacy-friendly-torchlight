@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Linterna</string>
+
+    <string name="no_flash">Gailu honek ez dauka flash argirik.</string>
+
+    <string name="description">Argia pizteko/itzaltzeko, sakatu goiko botoia.</string>
+    <string name="pause">itzali aplikazioa minimizatzean edo itxaroteko moduan egotean</string>
+
+    <string name="action_settings">Ezarpenak</string>
+
+    <string name="app_name_long">Privacy Friendly Linterna</string>
+    <string name="okay">Ados</string>
+    <string name="viewhelp">Ikusi Laguntza</string>
+    <string name="action_help">Laguntza</string>
+    <string name="action_about">Honi buruz</string>
+    <string name="welcome">Ongi etorri</string>
+
+    <string name="help">Orokorra</string>
+    <string name="help_privacy_heading">Pribatasun Informazioa</string>
+    <string name="help_permissions_heading">Kamera baimena</string>
+    <string name="help_permissions_description">Kamera baimena beharrezkoa da kameraren flash argia kontrolatzeko. Baimen hau ematen ez bada, aplikazioak ez du ongi funtzionatuko.</string>
+    <string name="help_intro">Hau zure smartphoneko flash argia kontrolatzen duen aplikazio sinplea da. Pantaila nagusiko botoia sakatu argia pizteko edo itzaltzeko.</string>
+
+    <string name="about">Honi buruz</string>
+    <string name="version_number">1.2 Bertsioa</string>
+    <string name="about_author">Egileak:</string>
+    <string name="about_author_contributors">eta laguntzaileak.</string>
+    <string name="about_affiliation">Afiliatuta</string>
+    <string name="privacy_friendly">Aplikazioa hau Privacy Friendly Apps taldekoa da, Technische Universität Darmstadt-ek garatutakoa. Kode-iturria GPLv3 lizentziapean dago. Irudien copyright TU Darmstadt eta Google Inc.</string>
+    <string name="more_info">Informazio gehiago topatu daiteke:</string>
+	<string name="welcome_text">Sakatu flash botoia argia pizteko edo itzaltzeko.</string>
+
+</resources>
