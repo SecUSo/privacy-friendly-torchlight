@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Torchlight</string>
+
+    <string name="no_flash">このデバイスにはフラッシュライトがありません。</string>
+
+    <string name="description">ライトをオン/オフするには、上のボタンを押してください。</string>
+    <string name="pause">アプリの最小化時または待機時にオフにする</string>
+
+    <string name="action_settings">設定</string>
+
+    <string name="app_name_long">Privacy Friendly Torchlight</string>
+    <string name="okay">OK</string>
+    <string name="viewhelp">ヘルプを表示</string>
+    <string name="action_help">ヘルプ</string>
+    <string name="action_about">アプリについて</string>
+    <string name="welcome">ようこそ</string>
+
+    <!--###HELP###-->
+    <string name="help">全般</string>
+    <string name="help_privacy_heading">プライバシー情報</string>
+    <string name="help_permissions_heading">カメラのアクセス許可</string>
+    <string name="help_permissions_description">カメラのライトを制御するため、カメラのアクセス許可が必要です。 このアクセス許可が与えられていないと、アプリは正しく動作しません。</string>
+    <string name="help_intro">これはお使いの携帯電話のフラッシュライトを制御する非常にシンプルなアプリケーションです。 開始画面のボタンをタップしてオン/オフを切り替えます。</string>
+
+    <!--###ABOUT###-->
+    <string name="about">アプリについて</string>
+    <string name="version_number">Version 1.2</string>
+    <string name="about_author">作者: </string>
+    <string name="about_author_contributors">と貢献者。</string>
+    <string name="about_affiliation">提携</string>
+    <string name="privacy_friendly">このアプリケーションは、ダルムシュタット工科大学 (Technische Universität Darmstadt, Germany) が開発したプライバシーフレンドリーアプリのグループに属しています。ソースコードは GPLv3 の下でライセンスされます。画像の著作権は TU Darmstadt および Google Inc.</string>
+    <string name="more_info">さらに詳しい情報は以下でご覧ください:</string>
+    <string name="welcome_text">フラッシュライトボタンをクリックすると、電話のライトをオンまたはオフに切り替えることができます。</string>
+
+</resources>
