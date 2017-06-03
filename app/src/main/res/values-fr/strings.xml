@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lampe de poche</string>
+    <string name="app_name_long">Lampe de poche respectueuse de la vie privée</string>
+
+    <string name="no_flash">Cet appareil n\'a pas de flash.</string>
+
+    <string name="description">Pour activer/désactiver la lumière, cliquez sur le bouton au-dessus.</string>
+    <!--<string name="pause">turn off on app minimize or standby</string>-->
+
+    <string name="action_settings">Paramètres</string>
+
+    <string name="okay">Ok</string>
+    <string name="viewhelp">Voir l\'aide</string>
+    <string name="action_help">Aide</string>
+    <string name="action_about">À propos</string>
+    <string name="welcome">Binvenue</string>
+
+    <!--###Aide###-->
+    <string name="help">Général</string>
+    <string name="help_privacy_heading">Infos sur la vie privée</string>
+    <string name="help_permissions_heading">Permission pour la caméra</string>
+    <string name="help_permissions_description">La permission pour la caméra est nécessaire pour contrôler la LED de la caméra. Si cette permission n\'est pas donnée, l\'app ne peut pas fonctionner correctement.</string>
+    <string name="help_intro">C\'est une application très simple pour contrôler la LED de votre appareil. Appuyez sur le bouton sur l\'écran de démarrage pour activer/désactiver.</string>
+
+    <!--###À propos###-->
+    <string name="about">À propos</string>
+    <string name="about_author">Auteurs : </string>
+    <string name="about_author_contributors">et contributeurs.</string>
+    <string name="about_affiliation">En lien avec</string>
+    <string name="privacy_friendly">Cette application appartien au groupe Privacy Friendly Apps développé par Technische Universität Darmstadt. Le code source est sous licence GNU GPLv3. Images sous le droit d\'auteur de TU Darmstadt et Google Inc.</string>
+    <string name="more_info">Plus d\'informations peuvent être trouvées sur :</string>
+    <string name="welcome_text">Cliquez sur le bouton de lampe pour activer/désactiver la LED de votre appareil.</string>
+
+</resources>
