@@ -10,14 +10,19 @@ This app is optimized regarding the user's privacy. It doesn't use any tracking 
 
 Privacy Friendly Torchlight belongs to the group of Privacy Friendly Apps and has been developed to provide a privacy friendly torchlight application. 
 
-## Building
+## Download and more Information
 
-Further development requires Android Studio, we recommend to use at least version 2.1.3
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60" />](https://f-droid.org/repository/browse/?fdid=com.secuso.torchlight2)
+<a href="https://play.google.com/store/apps/details?id=com.secuso.torchlight2"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60" /></a>
+
+### Building
+
+Further development requires Android Studio, we recommend to use at least version 2.1.3.
 
 ### API Reference
 
-Mininum SDK: 16
-Target SDK: 25 
+- Mininum SDK: 16
+- Target SDK: 25
 
 ## License
 
@@ -27,7 +32,7 @@ This program is free software: you can redistribute it and/or modify it under th
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License along with this program. If not, see http://www.gnu.org/licenses/.
+You should have received a copy of the GNU General Public License along with this program. If not, see https://www.gnu.org/licenses/.
 
 The icons used in the nagivation drawer are licensed under the CC BY 2.5. In addition to them the app uses icons from Google Design Material Icons licensed under Apache License Version 2.0. All other images (the logo of Privacy Friendly Apps, the SECUSO logo, the app logos and splash icon) copyright Technische Universtität Darmstadt (2016).
 
@@ -36,7 +41,7 @@ The icons used in the nagivation drawer are licensed under the CC BY 2.5. In add
 App-Icons:
 Markus Hau
 
-Github-Users: <br />
-p-rack <br />
-Kamuno <br />
+Users of GitHub:<br />
+p-rack<br />
+Kamuno<br />
 Yonjuni
