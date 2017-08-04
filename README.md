@@ -1,6 +1,6 @@
 # Privacy Friendly Torchlight
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/repository/browse/?fdfilter=torchlight&fdid=com.secuso.torchlight2)<a href="https://play.google.com/store/apps/details?id=com.secuso.torchlight2"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60">](https://f-droid.org/packages/com.secuso.torchlight2/)<a href="https://play.google.com/store/apps/details?id=com.secuso.torchlight2"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
 
 Privacy Friendly Torchlight is a very simple application to use the phones flash light and belongs to the group of Privacy Friendly Apps developed by Technische Universität Darmstadt, Germany.
 
@@ -9,11 +9,6 @@ This app is optimized regarding the user's privacy. It doesn't use any tracking 
 ## Motivation
 
 Privacy Friendly Torchlight belongs to the group of Privacy Friendly Apps and has been developed to provide a privacy friendly torchlight application. 
-
-## Download and more Information
-
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="60" />](https://f-droid.org/repository/browse/?fdid=com.secuso.torchlight2)
-<a href="https://play.google.com/store/apps/details?id=com.secuso.torchlight2"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60" /></a>
 
 ### Building
 
