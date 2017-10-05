@@ -52,17 +52,8 @@ public class MainActivity extends BaseActivity {
     private boolean endWhenPaused;
     private SharedPreferences preferences;
     private SharedPreferences.Editor prefEditor;
-
-    private CameraManager mCameraManager = null;
-
-    private Parameters p;
-
-    private Camera camera;
-
     private ICamera mCamera;
-
     private boolean isConnected;
-
     private Activity thisActivity = this;
 
     @Override

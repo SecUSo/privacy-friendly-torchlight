@@ -17,7 +17,9 @@ package com.secuso.torchlight2.camera;
 import android.content.Context;
 
 /**
- * Created by Chris on 11.12.2016.
+ * @author Christopher Beckmann
+ * @version 20161211
+ *
  */
 
 public interface ICamera {

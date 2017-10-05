@@ -24,8 +24,11 @@ import android.widget.TextView;
 import com.secuso.torchlight2.R;
 
 /**
- * Created by Philipp on 28.09.2015.
+ * @author Philipp Rack
+ * @version 20150928
+ *
  */
+
 public class AboutActivity extends AppCompatActivity {
 
     @Override

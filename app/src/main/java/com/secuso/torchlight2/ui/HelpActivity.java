@@ -23,8 +23,11 @@ import android.view.View;
 import com.secuso.torchlight2.R;
 
 /**
- * Created by yonjuni on 17.06.16.
+ * @author Karola Marky
+ * @version 20160617
+ *
  */
+
 public class HelpActivity extends AppCompatActivity {
 
     @Override

@@ -34,7 +34,9 @@ import android.view.View;
 import com.secuso.torchlight2.R;
 
 /**
- * Created by Chris on 04.07.2016.
+ * @author Christopher Beckmann
+ * @version 20160704
+ *
  */
 public class BaseActivity extends AppCompatActivity implements OnNavigationItemSelectedListener {
 

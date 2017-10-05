@@ -19,8 +19,11 @@ import android.hardware.Camera;
 import android.widget.Toast;
 
 /**
- * Created by Chris on 11.12.2016.
+ * @author Christopher Beckmann
+ * @version 20161211
+ *
  */
+
 public class CameraNormal implements ICamera {
 
     private Context mContext;
