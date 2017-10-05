@@ -1,3 +1,17 @@
+/**
+ * This file is part of Privacy Friendly Torchlight.
+ * Privacy Friendly Torchlight is free software:
+ * you can redistribute it and/or modify it under the terms of the
+ * GNU General Public License as published by the Free Software Foundation,
+ * either version 3 of the License, or any later version.
+ * Privacy Friendly Torchlight is distributed in the hope
+ * that it will be useful, but WITHOUT ANY WARRANTY; without even
+ * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Privacy Friendly Torchlight. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.secuso.torchlight2.ui;
 
 import android.Manifest;
@@ -64,7 +78,7 @@ public class MainActivity extends BaseActivity {
         endWhenPaused = preferences.getBoolean("closeOnPause", false);
 
         CheckBox pauseState = (CheckBox) findViewById(R.id.cbPause);
-        if(pauseState != null) {
+        if (pauseState != null) {
             pauseState.setChecked(endWhenPaused);
             pauseState.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,7 +123,7 @@ public class MainActivity extends BaseActivity {
         }
 
         // Check Android Version
-        if(SDK_INT >= Build.VERSION_CODES.M) {
+        if (SDK_INT >= Build.VERSION_CODES.M) {
             mCamera = new CameraMarshmallow();
         } else {
             mCamera = new CameraNormal();
@@ -124,10 +138,10 @@ public class MainActivity extends BaseActivity {
             public void onClick(View arg0) {
 
                 // can we have permissions that are revoked?
-                if(SDK_INT >= Build.VERSION_CODES.M) {
+                if (SDK_INT >= Build.VERSION_CODES.M) {
                     // check if we have the permission we need -> if not request it and turn on the light afterwards
                     if (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(thisActivity, new String[]{Manifest.permission.CAMERA},0);
+                        ActivityCompat.requestPermissions(thisActivity, new String[]{Manifest.permission.CAMERA}, 0);
                         return;
                     }
                 }
@@ -143,7 +157,7 @@ public class MainActivity extends BaseActivity {
     }
 
     private void toggleCamera(boolean enable) {
-        if(mCamera.toggle(enable)) {
+        if (mCamera.toggle(enable)) {
             flashState = enable;
             btnSwitch.setImageResource(enable ? R.drawable.ic_power_on : R.drawable.ic_power_off);
         }
@@ -158,7 +172,7 @@ public class MainActivity extends BaseActivity {
                     // yay, we got the permission -> turn on the light!
                     toggleCamera(!flashState);
                 } else {
-                    Toast.makeText(this, "Can not use flashlight without access to the camera." ,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Can not use flashlight without access to the camera.", Toast.LENGTH_SHORT).show();
                     // permission denied, boo!
                 }
             }
@@ -168,21 +182,21 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        if(!flashState)
+        if (!flashState)
             close();
-        else if(endWhenPaused) {
+        else if (endWhenPaused) {
             stop();
         }
     }
 
-    private void stop(){
+    private void stop() {
         flashState = false;
         isConnected = false;
         mCamera.toggle(false);
         mCamera.release();
     }
 
-    private void close(){
+    private void close() {
         flashState = false;
         isConnected = false;
         mCamera.release();
@@ -206,11 +220,11 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
 
-        if(!isConnected) {
+        if (!isConnected) {
             init();
         }
 
-        if(flashState) {
+        if (flashState) {
             btnSwitch.setImageResource(R.drawable.ic_power_on);
         } else {
             btnSwitch.setImageResource(R.drawable.ic_power_off);
@@ -242,7 +256,7 @@ public class MainActivity extends BaseActivity {
             builder.setNegativeButton(getActivity().getString(R.string.viewhelp), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    ((MainActivity)getActivity()).goToNavigationItem(R.id.nav_help);
+                    ((MainActivity) getActivity()).goToNavigationItem(R.id.nav_help);
                 }
             });
 
