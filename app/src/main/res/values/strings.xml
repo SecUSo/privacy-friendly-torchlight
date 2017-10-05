@@ -27,9 +27,9 @@
 
     <!--###ABOUT###-->
     <string name="about">About</string>
-    <string name="version_number">Version 1.2</string>
+    <string name="version_number">Version</string>
     <string name="about_author">Authors: </string>
-    <string name="about_author_names" translatable="false">Philipp Rack</string>
+    <string name="about_author_names" translatable="false">Philipp Rack, Christopher Beckmann, Karola Marky</string>
     <string name="about_author_contributors">and contributors.</string>
     <string name="about_affiliation">In affiliation with</string>
     <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps group developed by Technische Universität Darmstadt. Source code is licensed under GPLv3. Images copyright TU Darmstadt and Google Inc.</string>

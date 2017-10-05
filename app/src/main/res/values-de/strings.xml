@@ -30,5 +30,5 @@
     <string name="welcome">Willkommen</string>
     <string name="welcome_text">Drücke auf den Taschenlampen-Knopf um die Taschanlampe an und aus zu schalten.</string>
     <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt von der Technischen Universität Darmstadt. Quelltext lizenziert unter GPLv3. Bilder copyright TU Darmstadt und Google Inc.</string>
-    <string name="version_number">Version  1.3</string>
+    <string name="version_number">Version</string>
 </resources>

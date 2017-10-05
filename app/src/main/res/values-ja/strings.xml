@@ -25,7 +25,7 @@
 
     <!--###ABOUT###-->
     <string name="about">アプリについて</string>
-    <string name="version_number">Version 1.2</string>
+    <string name="version_number">Version</string>
     <string name="about_author">作者: </string>
     <string name="about_author_contributors">と貢献者。</string>
     <string name="about_affiliation">提携</string>

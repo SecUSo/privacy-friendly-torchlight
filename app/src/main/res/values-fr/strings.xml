@@ -25,7 +25,7 @@
 
     <!--###ABOUT###-->
     <string name="about">À propos</string>
-    <string name="version_number">Version 1.2</string>
+    <string name="version_number">Version</string>
     <string name="about_author">Auteurs :</string>
     <string name="about_author_contributors">et les contributeurs.</string>
     <string name="about_affiliation">En affiliation avec</string>

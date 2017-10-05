@@ -21,6 +21,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
+import com.secuso.torchlight2.BuildConfig;
 import com.secuso.torchlight2.R;
 
 /**
@@ -49,6 +50,7 @@ public class AboutActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.secusoWebsite)).setMovementMethod(LinkMovementMethod.getInstance());
         ((TextView)findViewById(R.id.githubURL)).setMovementMethod(LinkMovementMethod.getInstance());
+        ((TextView)findViewById(R.id.textFieldVersionName)).setText(BuildConfig.VERSION_NAME);
 
         overridePendingTransition(0, 0);
     }
