@@ -47,8 +47,7 @@
                 android:clickable="true"
                 android:cropToPadding="false"
                 android:focusableInTouchMode="false"
-                android:scaleType="fitCenter"
-                android:src="@drawable/off" />
+                android:scaleType="fitCenter" />
 
             <TextView
                 android:id="@+id/tvDescription"
