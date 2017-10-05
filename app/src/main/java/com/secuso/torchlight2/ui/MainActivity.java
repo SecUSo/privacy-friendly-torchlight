@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -26,9 +25,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.secuso.torchlight2.R;
+import com.secuso.torchlight2.camera.CameraMarshmallow;
 import com.secuso.torchlight2.camera.CameraNormal;
 import com.secuso.torchlight2.camera.ICamera;
-import com.secuso.torchlight2.camera.CameraMarshmallow;
 
 import static android.os.Build.VERSION.SDK_INT;
 
