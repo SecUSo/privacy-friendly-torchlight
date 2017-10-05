@@ -7,8 +7,6 @@
     <string name="description">Pour activer ou désactiver la lampe, appuyez sur le bouton ci-dessus.</string>
     <string name="pause">éteindre quand l\'appli est minimisée ou en veille</string>
 
-    <string name="action_settings">Paramètres</string>
-
     <string name="app_name_long">Privacy Friendly Lampe de poche</string>
     <string name="okay">OK</string>
     <string name="viewhelp">Voir l\'Aide</string>

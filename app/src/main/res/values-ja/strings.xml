@@ -7,8 +7,6 @@
     <string name="description">ライトをオン/オフするには、上のボタンを押してください。</string>
     <string name="pause">アプリの最小化時または待機時にオフにする</string>
 
-    <string name="action_settings">設定</string>
-
     <string name="app_name_long">Privacy Friendly Torchlight</string>
     <string name="okay">OK</string>
     <string name="viewhelp">ヘルプを表示</string>
