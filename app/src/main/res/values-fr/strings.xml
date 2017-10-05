@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lampe de poche</string>
+
+    <string name="no_flash">Cet appareil n\'a pas de lampe.</string>
+
+    <string name="description">Pour activer ou désactiver la lampe, appuyez sur le bouton ci-dessus.</string>
+    <string name="pause">éteindre quand l\'appli est minimisée ou en veille</string>
+
+    <string name="action_settings">Paramètres</string>
+
+    <string name="app_name_long">Privacy Friendly Lampe de poche</string>
+    <string name="okay">OK</string>
+    <string name="viewhelp">Voir l\'Aide</string>
+    <string name="action_help">Aide</string>
+    <string name="action_about">À propos</string>
+    <string name="welcome">Bienvenue</string>
+
+    <!--###HELP###-->
+    <string name="help">Général</string>
+    <string name="help_privacy_heading">Infos Vie Privée</string>
+    <string name="help_permissions_heading">Permission caméra</string>
+    <string name="help_permissions_description">La permission d\'accès à la caméra est requise pour contrôler la lampe. Si cette permission n\'est pas accordée, l\'application ne fonctionnera pas correctement.</string>
+    <string name="help_intro">Ceci est une application très simple pour contrôler la lampe de votre appareil. Cliquez sur le bouton de la page d\'accueil pour l\'allumer ou l\'éteindre.</string>
+
+    <!--###ABOUT###-->
+    <string name="about">À propos</string>
+    <string name="version_number">Version 1.2</string>
+    <string name="about_author">Auteurs :</string>
+    <string name="about_author_contributors">et les contributeurs.</string>
+    <string name="about_affiliation">En affiliation avec</string>
+    <string name="privacy_friendly">Cette application appartient au groupe d\'applis respectant votre vie privée développées par la Technische Universität Darmstadt. Le code source est sous licence GPLv3. Copyright des images : TU Darmstadt et Google Inc.</string>
+    <string name="more_info">Plus d\'informations sur :</string>
+    <string name="welcome_text">Cliquez sur le bouton central pour allumer ou éteindre la lampe de votre appareil.</string>
+
+</resources>
