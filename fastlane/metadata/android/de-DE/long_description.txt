@@ -1,0 +1,20 @@
+Die Privacy Friendly Taschenlampe App ermöglicht es das eingebaute Kameralicht als Taschenlampe zu nutzen.
+
+
+
+Die App unterscheidet sich von anderen ähnlichen Taschenlampen-Applikationen hinsichtlich zweiter Aspekte:
+
+
+1. Die Privacy Friendly Taschenlampe App benötigt nur ein Minimum an *Berechtigungen*, namentlich:
+
+In Kategorie "Kamera/Mikrophon": KAMERA
+
+Diese wird benötigt, damit die App das Kameralicht steuern kann (an/aus).
+
+Die meisten Taschenlampen Apps, die im Google Play Store erhältlich sind, benötigen zusätzliche Berechtigungen, die für die Taschenlampen-Funktionalität nicht benötigt werden. Hierzu zählen der Zugriff auf das Netzwerk oder Internet, was meist mit dem Anzeigen von Werbung verbunden ist. Einzelne können auf Standort- sowie Telefoniedaten zugreifen, was für die Funktionalität einer Taschenlampenapplikation vollkommen unnötig ist.
+
+
+
+2. Die Privacy Friendly Taschenlampe App verzichtet komplett auf das Einblenden von Werbung. Viele ähnliche Apps im Google Play Store zeigen Werbung an.
+
+Die App gehört zur Gruppe der Privacy Friendly Apps, die von der Forschungsgruppe SECUSO der Technischen Universität Darmstadt entwickelt werden. Mehr Informationen unter: https://secuso.org/pfa

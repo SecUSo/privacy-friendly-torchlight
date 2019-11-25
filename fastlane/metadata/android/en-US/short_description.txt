@@ -1,0 +1,1 @@
+Torchlight app with minimal permissions (CAMERA) and no advertisement
