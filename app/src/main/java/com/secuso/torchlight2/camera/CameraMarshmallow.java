@@ -22,12 +22,15 @@ import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+
 /**
  * @author Christopher Beckmann
  * @version 20161211
  *
  */
 
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class CameraMarshmallow implements ICamera {
 
     private Context mContext;
@@ -44,7 +47,8 @@ public class CameraMarshmallow implements ICamera {
             for(final String cameraId : mCameraManager.getCameraIdList()){
                 CameraCharacteristics characteristics = mCameraManager.getCameraCharacteristics(cameraId);
                 int cOrientation = characteristics.get(CameraCharacteristics.LENS_FACING);
-                if(cOrientation == CameraCharacteristics.LENS_FACING_BACK){
+                Boolean available = characteristics.get(CameraCharacteristics.FLASH_INFO_AVAILABLE);
+                if(cOrientation == CameraCharacteristics.LENS_FACING_BACK && available != null && available) {
                     mCameraID= cameraId;
                 }
             }
