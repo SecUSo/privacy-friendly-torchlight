@@ -6,8 +6,6 @@
     <string name="description">Argia pizteko/itzaltzeko, sakatu goiko botoia.</string>
     <string name="pause">itzali aplikazioa minimizatzean edo itxaroteko moduan egotean</string>
 
-    <string name="action_settings">Ezarpenak</string>
-
     <string name="app_name_long">Privacy Friendly Linterna</string>
     <string name="okay">Ados</string>
     <string name="viewhelp">Ikusi Laguntza</string>
@@ -26,7 +24,7 @@
     <string name="about_author">Egileak:</string>
     <string name="about_author_contributors">eta laguntzaileak.</string>
     <string name="about_affiliation">Afiliatuta</string>
-    <string name="privacy_friendly">Aplikazioa hau Privacy Friendly Apps taldekoa da, Technische Universität Darmstadt-ek garatutakoa. Kode-iturria GPLv3 lizentziapean dago. Irudien copyright TU Darmstadt eta Google Inc.</string>
+    <string name="privacy_friendly">Aplikazioa hau Privacy Friendly Apps taldekoa da, Technische Universitï¿½t Darmstadt-ek garatutakoa. Kode-iturria GPLv3 lizentziapean dago. Irudien copyright TU Darmstadt eta Google Inc.</string>
     <string name="more_info">Informazio gehiago topatu daiteke:</string>
 	<string name="welcome_text">Sakatu flash botoia argia pizteko edo itzaltzeko.</string>
 
