@@ -18,3 +18,9 @@ Die meisten Taschenlampen Apps, die im Google Play Store erhältlich sind, benö
 2. Die Privacy Friendly Taschenlampe App verzichtet komplett auf das Einblenden von Werbung. Viele ähnliche Apps im Google Play Store zeigen Werbung an.
 
 Die App gehört zur Gruppe der Privacy Friendly Apps, die von der Forschungsgruppe SECUSO der Technischen Universität Darmstadt entwickelt werden. Mehr Informationen unter: https://secuso.org/pfa
+
+
+Kontaktieren Sie uns gerne über:
+Twitter - @SECUSOResearch https://twitter.com/secusoresearc)
+Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
+Offene Stellen - https://secuso.aifb.kit.edu/83_1557.php
