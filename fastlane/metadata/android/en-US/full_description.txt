@@ -1,5 +1,26 @@
 
 
+
+Our Privacy Friendly Torchlight App differs with respect to two aspects:
+
+
+
+1. The Privacy Friendly Torchlight App only requires the minimum amount of permissions, namely:
+
+In category "Camera/Microphone": CAMERA
+
+This permission is required to control the smartphone’s flash light (on/off).
+
+
+
+Most of Torchlight Apps in the Google Play Store require additional permissions. E.g. accessing the network or Internet which is mostly used to display advertisement. Some apps have access to GPS or telephony data.
+
+
+
+2. The Privacy Friendly Torchlight App completely relinquishes advertisement. Many other apps in the Google Play Store display advertisement.
+
+
+Feel free to contact us via:
 Twitter - @SECUSOResearch https://twitter.com/secusoresearch
-Mastodon - @SECUSO_Research@baw  .social https://xn--baw-joa.social/@SECUSO_Research/
+Mastodon - @SECUSO_Research@bawü.social https://xn--baw-joa.social/@SECUSO_Research/
 Job opening - https://secuso.aifb.kit.edu/english/Job_Offers_1557.php
