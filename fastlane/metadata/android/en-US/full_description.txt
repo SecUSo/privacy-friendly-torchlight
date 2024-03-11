@@ -1,4 +1,4 @@
-
+The Privacy Friendly Torchlight application uses the smartphone’s flash light in order to provide the functionality of a simple torchlight. It belongs to the group of Privacy Friendly Apps.
 
 
 Our Privacy Friendly Torchlight App differs with respect to two aspects:

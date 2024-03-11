@@ -1,4 +1,4 @@
-
+Die Privacy Friendly Taschenlampe App ermöglicht es das eingebaute Kameralicht als Taschenlampe zu nutzen.
 
 
 Die App unterscheidet sich von anderen ähnlichen Taschenlampen-Applikationen hinsichtlich zweiter Aspekte:
