@@ -4,7 +4,7 @@ apply plugin: 'kotlin-kapt'
 
 android {
     compileSdk 34
-    namespace "org.secuso.torchlight2"
+    namespace "com.secuso.torchlight2"
 
     defaultConfig {
         applicationId 'com.secuso.torchlight2'
