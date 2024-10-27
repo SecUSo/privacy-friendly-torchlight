@@ -15,9 +15,6 @@ package com.secuso.torchlight2.ui
 
 import android.Manifest
 import android.app.Activity
-import android.app.Dialog
-import android.app.DialogFragment
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Build.VERSION
@@ -28,24 +25,26 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.preference.PreferenceManager
-import com.secuso.torchlight2.R
+import com.secuso.torchlight2.PFApplicationData
 import com.secuso.torchlight2.camera.CameraMarshmallow
 import com.secuso.torchlight2.camera.CameraNormal
+import com.secuso.torchlight2.R
 import com.secuso.torchlight2.camera.ICamera
+import org.secuso.pfacore.model.DrawerElement
 
 class MainActivity : BaseActivity() {
     private var flashState = false
     private var btnSwitch: ImageButton? = null
-    private var endWhenPaused = false
-    private lateinit var preferences: SharedPreferences
-    private lateinit var prefEditor: SharedPreferences.Editor
+    private val closeOnPause by lazy {
+        PFApplicationData.instance(this).closeOnPause
+    }
     private var mCamera: ICamera? = null
     private var isConnected = false
     private val thisActivity: Activity = this
+
+    override fun isActiveDrawerElement(element: DrawerElement) = element.name == ContextCompat.getString(this, R.string.nav_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,42 +52,16 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.activity_main)
 
         btnSwitch = findViewById<View>(R.id.btnSwitch) as ImageButton
-        preferences = this.getPreferences(MODE_PRIVATE)
-        prefEditor = preferences.edit()
         flashState = false
-        endWhenPaused = preferences.getBoolean("closeOnPause", false)
 
         findViewById<CheckBox>(R.id.cbPause).apply {
-            isChecked = endWhenPaused
+            isChecked = closeOnPause.value
             setOnClickListener {
-                endWhenPaused = !endWhenPaused
-                prefEditor.putBoolean("closeOnPause", endWhenPaused)
-                prefEditor.commit()
+                closeOnPause.value = !closeOnPause.value
             }
         }
-
-        PreferenceManager
-            .getDefaultSharedPreferences(this)
-            .edit()
-            .putString("firstShow", "")
-            .apply()
-        getSharedPreferences("firstShow", MODE_PRIVATE).apply {
-            if (getBoolean("isFirstRun", true)) {
-                val welcomeDialog = WelcomeDialog()
-                welcomeDialog.show(fragmentManager, "WelcomeDialog")
-
-                edit()
-                    .putBoolean("isFirstRun", false)
-                    .commit()
-            }
-        }
-
 
         init()
-    }
-
-    override fun onPause() {
-        super.onPause()
     }
 
     private fun init() {
@@ -155,7 +128,7 @@ class MainActivity : BaseActivity() {
     override fun onStop() {
         super.onStop()
         if (!flashState) close()
-        else if (endWhenPaused) {
+        else if (closeOnPause.value) {
             stop()
         }
     }
@@ -197,31 +170,6 @@ class MainActivity : BaseActivity() {
             btnSwitch!!.setImageResource(R.drawable.ic_power_on)
         } else {
             btnSwitch!!.setImageResource(R.drawable.ic_power_off)
-        }
-    }
-
-    override fun getNavigationDrawerID(): Int {
-        return 0
-    }
-
-
-    class WelcomeDialog : DialogFragment() {
-        override fun onAttach(activity: Activity) {
-            super.onAttach(activity)
-        }
-
-        override fun onCreateDialog(savedInstanceState: Bundle): Dialog {
-            val i = activity.layoutInflater
-            val builder = AlertDialog.Builder(activity)
-            builder.setView(i.inflate(R.layout.welcome_dialog, null))
-            builder.setIcon(R.mipmap.ic_launcher)
-            builder.setTitle(activity.getString(R.string.welcome))
-            builder.setPositiveButton(activity.getString(R.string.okay), null)
-            builder.setNegativeButton(
-                activity.getString(R.string.viewhelp)
-            ) { dialog, which -> (activity as MainActivity).goToNavigationItem(R.id.nav_help) }
-
-            return builder.create()
         }
     }
 }

@@ -14,6 +14,7 @@
 package com.secuso.torchlight2.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.core.content.ContextCompat
 import com.secuso.torchlight2.R
 import org.secuso.pfacore.model.DrawerMenu
@@ -25,9 +26,12 @@ import org.secuso.pfacore.ui.activities.DrawerActivity
  */
 abstract class BaseActivity : DrawerActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setSupportActionBar(findViewById(R.id.toolbar))
+    override fun setContentView(layoutResID: Int) {
+        super.setContent(layoutResID)
+    }
+
+    override fun setContentView(view: View) {
+        super.setContent(view)
     }
 
     override fun drawer() = DrawerMenu.build {
