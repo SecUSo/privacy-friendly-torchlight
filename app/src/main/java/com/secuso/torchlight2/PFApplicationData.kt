@@ -14,8 +14,6 @@ import org.secuso.pfacore.ui.preferences.settings.DeviceInformationOnErrorReport
 import org.secuso.pfacore.ui.preferences.settings.PreferenceFirstTimeLaunch
 import org.secuso.pfacore.ui.preferences.settings.SettingThemeSelector
 import org.secuso.pfacore.ui.tutorial.buildTutorial
-import org.secuso.torchlight2.BuildConfig
-import org.secuso.torchlight2.R
 
 class PFApplicationData private constructor(context: Context) {
 
@@ -25,9 +23,16 @@ class PFApplicationData private constructor(context: Context) {
         private set
     lateinit var includeDeviceDataInReport: Preferable<Boolean>
         private set
+    lateinit var closeOnPause: Preferable<Boolean>
+
     private val preferences = appPreferences(context) {
         preferences {
             firstTimeLaunch = PreferenceFirstTimeLaunch().build().invoke(this)
+            closeOnPause = preference {
+                key = "closeOnPause"
+                default = false
+                backup = false
+            }
         }
         settings {
             category(ContextCompat.getString(context, R.string.settings_category_general)) {
