@@ -28,5 +28,6 @@
     <string name="more_info">Informazio gehiago topatu daiteke:</string>
 	<string name="welcome_text">Sakatu flash botoia argia pizteko edo itzaltzeko.</string>
     <string name="settings_category_general">Orokorra</string>
+    <string name="nav_main">Menu nagusia</string>
 
 </resources>

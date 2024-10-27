@@ -39,5 +39,6 @@
     <string name="welcome_text">Click the flashlight button to toggle your phone\'s light on and off.</string>
 
     <string name="settings_category_general">General</string>
+    <string name="nav_main">Main</string>
 
 </resources>

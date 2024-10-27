@@ -30,4 +30,5 @@
     <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt vom Karlsruher Institut für Technologie. Quelltext lizenziert unter GPLv3. Bilder copyright KIT und Google Inc.</string>
     <string name="version_number">Version</string>
     <string name="settings_category_general">Allgemein</string>
+    <string name="nav_main">Hauptmenü</string>
 </resources>

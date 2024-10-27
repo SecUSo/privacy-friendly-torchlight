@@ -31,5 +31,6 @@
     <string name="more_info">Plus d\'informations sur :</string>
     <string name="welcome_text">Cliquez sur le bouton central pour allumer ou éteindre la lampe de votre appareil.</string>
     <string name="settings_category_general">Général</string>
+    <string name="nav_main">Menu principal</string>
 
 </resources>
