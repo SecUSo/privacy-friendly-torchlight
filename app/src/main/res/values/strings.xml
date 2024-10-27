@@ -19,7 +19,7 @@
 
     <!--###ABOUT###-->
     <string name="about_author_names" translatable="false">Philipp Rack, Christopher Beckmann, Karola Marky</string>
-    <string name="github" translatable="false"><a href="https://github.com/SecUSo/privacy-friendly-torchlight">Github-Repo</a></string>
+    <string name="github" translatable="false">https://github.com/SecUSo/privacy-friendly-torchlight</string>
     <string name="welcome_text">Click the flashlight button to toggle your phone\'s light on and off.</string>
 
     <string name="settings_category_general">General</string>
