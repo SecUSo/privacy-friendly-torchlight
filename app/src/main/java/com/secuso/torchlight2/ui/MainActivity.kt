@@ -19,7 +19,6 @@ import android.os.Build.VERSION
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
-import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.Toast
@@ -35,7 +34,7 @@ import org.secuso.pfacore.ui.declareUsage
 
 class MainActivity : BaseActivity() {
     private var flashState = false
-    private var btnSwitch: ImageButton? = null
+    private val btnSwitch: ImageButton by lazy { findViewById(R.id.btnSwitch) }
     private val closeOnPause by lazy {
         PFApplicationData.instance(this).closeOnPause
     }
@@ -47,10 +46,8 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
 
-        btnSwitch = findViewById<View>(R.id.btnSwitch) as ImageButton
         flashState = false
 
         // Use the camera permission to toggle the camera.
@@ -60,7 +57,7 @@ class MainActivity : BaseActivity() {
             onGranted = {
                 if (mCamera!!.toggle(!flashState)) {
                     flashState = !flashState
-                    btnSwitch!!.setImageResource(if (flashState) R.drawable.ic_power_on else R.drawable.ic_power_off)
+                    btnSwitch.setImageResource(if (flashState) R.drawable.ic_power_on else R.drawable.ic_power_off)
                 }
             }
             onDenied = {
@@ -89,7 +86,7 @@ class MainActivity : BaseActivity() {
         if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA) || !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
             Log.e("err", "Device has no camera!")
             Toast.makeText(this, R.string.no_flash, Toast.LENGTH_LONG).show()
-            btnSwitch!!.isEnabled = false
+            btnSwitch.isEnabled = false
             return
         }
 
@@ -103,7 +100,7 @@ class MainActivity : BaseActivity() {
         // set up camera
         setUpCamera()
 
-        btnSwitch!!.setOnClickListener { toggleCamera() }
+        btnSwitch.setOnClickListener { toggleCamera() }
     }
 
     private fun setUpCamera() {
@@ -153,9 +150,9 @@ class MainActivity : BaseActivity() {
         }
 
         if (flashState) {
-            btnSwitch!!.setImageResource(R.drawable.ic_power_on)
+            btnSwitch.setImageResource(R.drawable.ic_power_on)
         } else {
-            btnSwitch!!.setImageResource(R.drawable.ic_power_off)
+            btnSwitch.setImageResource(R.drawable.ic_power_off)
         }
     }
 }
