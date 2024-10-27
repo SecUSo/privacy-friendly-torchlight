@@ -9,246 +9,219 @@
  * the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU General Public License for more details.
  * You should have received a copy of the GNU General Public License
- * along with Privacy Friendly Torchlight. If not, see <http://www.gnu.org/licenses/>.
+ * along with Privacy Friendly Torchlight. If not, see <http:></http:>//www.gnu.org/licenses/>.
  */
+package com.secuso.torchlight2.ui
 
-package com.secuso.torchlight2.ui;
+import android.Manifest
+import android.app.Activity
+import android.app.Dialog
+import android.app.DialogFragment
+import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Build.VERSION
+import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
+import android.view.View
+import android.widget.CheckBox
+import android.widget.ImageButton
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.preference.PreferenceManager
+import com.secuso.torchlight2.R
+import com.secuso.torchlight2.camera.CameraMarshmallow
+import com.secuso.torchlight2.camera.CameraNormal
+import com.secuso.torchlight2.camera.ICamera
 
-import android.Manifest;
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.DialogFragment;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.os.Build;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.appcompat.app.AlertDialog;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.ImageButton;
-import android.widget.Toast;
+class MainActivity : BaseActivity() {
+    private var flashState = false
+    private var btnSwitch: ImageButton? = null
+    private var endWhenPaused = false
+    private lateinit var preferences: SharedPreferences
+    private lateinit var prefEditor: SharedPreferences.Editor
+    private var mCamera: ICamera? = null
+    private var isConnected = false
+    private val thisActivity: Activity = this
 
-import com.secuso.torchlight2.R;
-import com.secuso.torchlight2.camera.CameraMarshmallow;
-import com.secuso.torchlight2.camera.CameraNormal;
-import com.secuso.torchlight2.camera.ICamera;
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-import static android.os.Build.VERSION.SDK_INT;
+        setContentView(R.layout.activity_main)
 
-public class MainActivity extends BaseActivity {
+        btnSwitch = findViewById<View>(R.id.btnSwitch) as ImageButton
+        preferences = this.getPreferences(MODE_PRIVATE)
+        prefEditor = preferences.edit()
+        flashState = false
+        endWhenPaused = preferences.getBoolean("closeOnPause", false)
 
-    private boolean flashState = false;
-    private ImageButton btnSwitch;
-    private boolean endWhenPaused;
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor prefEditor;
-    private ICamera mCamera;
-    private boolean isConnected;
-    private Activity thisActivity = this;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_main);
-
-        btnSwitch = (ImageButton) findViewById(R.id.btnSwitch);
-        preferences = this.getPreferences(MODE_PRIVATE);
-        prefEditor = preferences.edit();
-        flashState = false;
-        endWhenPaused = preferences.getBoolean("closeOnPause", false);
-
-        CheckBox pauseState = (CheckBox) findViewById(R.id.cbPause);
-        if (pauseState != null) {
-            pauseState.setChecked(endWhenPaused);
-            pauseState.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    endWhenPaused = !endWhenPaused;
-                    prefEditor.putBoolean("closeOnPause", endWhenPaused);
-                    prefEditor.commit();
-                }
-            });
+        findViewById<CheckBox>(R.id.cbPause).apply {
+            isChecked = endWhenPaused
+            setOnClickListener {
+                endWhenPaused = !endWhenPaused
+                prefEditor.putBoolean("closeOnPause", endWhenPaused)
+                prefEditor.commit()
+            }
         }
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        sharedPreferences.edit().putString("firstShow", "").apply();
-        SharedPreferences settings = getSharedPreferences("firstShow", getBaseContext().MODE_PRIVATE);
+        PreferenceManager
+            .getDefaultSharedPreferences(this)
+            .edit()
+            .putString("firstShow", "")
+            .apply()
+        getSharedPreferences("firstShow", MODE_PRIVATE).apply {
+            if (getBoolean("isFirstRun", true)) {
+                val welcomeDialog = WelcomeDialog()
+                welcomeDialog.show(fragmentManager, "WelcomeDialog")
 
-        if (settings.getBoolean("isFirstRun", true)) {
-            WelcomeDialog welcomeDialog = new WelcomeDialog();
-            welcomeDialog.show(getFragmentManager(), "WelcomeDialog");
-
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putBoolean("isFirstRun", false);
-            editor.commit();
+                edit()
+                    .putBoolean("isFirstRun", false)
+                    .commit()
+            }
         }
 
-        init();
+
+        init()
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+    override fun onPause() {
+        super.onPause()
     }
 
-    private void init() {
-        PackageManager pm = getPackageManager();
+    private fun init() {
+        val pm = packageManager
 
         // if device support camera?
-        if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA) | !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
-            Log.e("err", "Device has no camera!");
-            Toast.makeText(this, R.string.no_flash, Toast.LENGTH_LONG).show();
-            btnSwitch.setEnabled(false);
-            return;
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA) || !pm.hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)) {
+            Log.e("err", "Device has no camera!")
+            Toast.makeText(this, R.string.no_flash, Toast.LENGTH_LONG).show()
+            btnSwitch!!.isEnabled = false
+            return
         }
 
         // Check Android Version
-        if (SDK_INT >= Build.VERSION_CODES.M) {
-            mCamera = new CameraMarshmallow();
+        mCamera = if (VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            CameraMarshmallow()
         } else {
-            mCamera = new CameraNormal();
+            CameraNormal()
         }
 
         // set up camera
-        setUpCamera();
+        setUpCamera()
 
-        btnSwitch.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-
-                // can we have permissions that are revoked?
-                if (SDK_INT >= Build.VERSION_CODES.M) {
-                    // check if we have the permission we need -> if not request it and turn on the light afterwards
-                    if (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions(thisActivity, new String[]{Manifest.permission.CAMERA}, 0);
-                        return;
-                    }
+        btnSwitch!!.setOnClickListener(View.OnClickListener { // can we have permissions that are revoked?
+            if (VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                // check if we have the permission we need -> if not request it and turn on the light afterwards
+                if (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(thisActivity, arrayOf(Manifest.permission.CAMERA), 0)
+                    return@OnClickListener
                 }
-
-                toggleCamera(!flashState);
             }
-        });
+            toggleCamera(!flashState)
+        })
     }
 
-    private void setUpCamera() {
-        mCamera.init(this);
-        isConnected = true;
+    private fun setUpCamera() {
+        mCamera!!.init(this)
+        isConnected = true
     }
 
-    private void toggleCamera(boolean enable) {
-        if (mCamera.toggle(enable)) {
-            flashState = enable;
-            btnSwitch.setImageResource(enable ? R.drawable.ic_power_on : R.drawable.ic_power_off);
+    private fun toggleCamera(enable: Boolean) {
+        if (mCamera!!.toggle(enable)) {
+            flashState = enable
+            btnSwitch!!.setImageResource(if (enable) R.drawable.ic_power_on else R.drawable.ic_power_off)
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-            case 0: {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            0 -> {
                 // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     // yay, we got the permission -> turn on the light!
-                    toggleCamera(!flashState);
+                    toggleCamera(!flashState)
                 } else {
-                    Toast.makeText(this, "Can not use flashlight without access to the camera.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Can not use flashlight without access to the camera.", Toast.LENGTH_SHORT).show()
                     // permission denied, boo!
                 }
             }
         }
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        if (!flashState)
-            close();
+    override fun onStop() {
+        super.onStop()
+        if (!flashState) close()
         else if (endWhenPaused) {
-            stop();
+            stop()
         }
     }
 
-    private void stop() {
-        flashState = false;
-        isConnected = false;
-        mCamera.toggle(false);
-        mCamera.release();
+    private fun stop() {
+        flashState = false
+        isConnected = false
+        mCamera!!.toggle(false)
+        mCamera!!.release()
     }
 
-    private void close() {
-        flashState = false;
-        isConnected = false;
-        mCamera.release();
+    private fun close() {
+        flashState = false
+        isConnected = false
+        mCamera!!.release()
     }
 
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
+    override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            moveTaskToBack(true);
-            return true;
+            moveTaskToBack(true)
+            return true
         }
-        return super.onKeyDown(keyCode, event);
+        return super.onKeyDown(keyCode, event)
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+    override fun onResume() {
+        super.onResume()
 
         if (!isConnected) {
-            init();
+            init()
         }
 
         if (flashState) {
-            btnSwitch.setImageResource(R.drawable.ic_power_on);
+            btnSwitch!!.setImageResource(R.drawable.ic_power_on)
         } else {
-            btnSwitch.setImageResource(R.drawable.ic_power_off);
+            btnSwitch!!.setImageResource(R.drawable.ic_power_off)
         }
     }
 
-    @Override
-    protected int getNavigationDrawerID() {
-        return 0;
+    override fun getNavigationDrawerID(): Int {
+        return 0
     }
 
 
-    public static class WelcomeDialog extends DialogFragment {
-
-        @Override
-        public void onAttach(Activity activity) {
-            super.onAttach(activity);
+    class WelcomeDialog : DialogFragment() {
+        override fun onAttach(activity: Activity) {
+            super.onAttach(activity)
         }
 
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
+        override fun onCreateDialog(savedInstanceState: Bundle): Dialog {
+            val i = activity.layoutInflater
+            val builder = AlertDialog.Builder(activity)
+            builder.setView(i.inflate(R.layout.welcome_dialog, null))
+            builder.setIcon(R.mipmap.ic_launcher)
+            builder.setTitle(activity.getString(R.string.welcome))
+            builder.setPositiveButton(activity.getString(R.string.okay), null)
+            builder.setNegativeButton(
+                activity.getString(R.string.viewhelp)
+            ) { dialog, which -> (activity as MainActivity).goToNavigationItem(R.id.nav_help) }
 
-            LayoutInflater i = getActivity().getLayoutInflater();
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setView(i.inflate(R.layout.welcome_dialog, null));
-            builder.setIcon(R.mipmap.ic_launcher);
-            builder.setTitle(getActivity().getString(R.string.welcome));
-            builder.setPositiveButton(getActivity().getString(R.string.okay), null);
-            builder.setNegativeButton(getActivity().getString(R.string.viewhelp), new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    ((MainActivity) getActivity()).goToNavigationItem(R.id.nav_help);
-                }
-            });
-
-            return builder.create();
+            return builder.create()
         }
     }
 }
