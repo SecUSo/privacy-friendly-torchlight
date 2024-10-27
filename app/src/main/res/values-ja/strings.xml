@@ -30,5 +30,6 @@
     <string name="privacy_friendly">このアプリケーションは、ダルムシュタット工科大学 (Karlsruhe Institute of Technology, Germany) が開発したプライバシーフレンドリーアプリのグループに属しています。ソースコードは GPLv3 の下でライセンスされます。画像の著作権は KIT および Google Inc.</string>
     <string name="more_info">さらに詳しい情報は以下でご覧ください:</string>
     <string name="welcome_text">フラッシュライトボタンをクリックすると、電話のライトをオンまたはオフに切り替えることができます。</string>
+    <string name="settings_category_general">全般</string>
 
 </resources>

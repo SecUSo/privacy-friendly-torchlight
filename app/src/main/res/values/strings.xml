@@ -38,4 +38,6 @@
     <string name="url" translatable="false"><a href="https://www.secuso.org/pfa">SECUSO-Website</a></string>
     <string name="welcome_text">Click the flashlight button to toggle your phone\'s light on and off.</string>
 
+    <string name="settings_category_general">General</string>
+
 </resources>

@@ -30,5 +30,6 @@
     <string name="privacy_friendly">Cette application appartient au groupe d\'applis respectant votre vie privée développées par la Karlsruhe Institute of Technology. Le code source est sous licence GPLv3. Copyright des images : KIT et Google Inc.</string>
     <string name="more_info">Plus d\'informations sur :</string>
     <string name="welcome_text">Cliquez sur le bouton central pour allumer ou éteindre la lampe de votre appareil.</string>
+    <string name="settings_category_general">Général</string>
 
 </resources>
