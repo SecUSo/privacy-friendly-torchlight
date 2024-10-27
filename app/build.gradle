@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdk 34
+    namespace "org.secuso.torchlight2"
+
     defaultConfig {
         applicationId 'com.secuso.torchlight2'
         minSdkVersion 16
