@@ -29,5 +29,8 @@
 	<string name="welcome_text">Sakatu flash botoia argia pizteko edo itzaltzeko.</string>
     <string name="settings_category_general">Orokorra</string>
     <string name="nav_main">Menu nagusia</string>
+    <string name="permission_camera_for_flashlight_title">Kameraren baimena behar da</string>
+    <string name="permission_camera_for_flashlight_description">Aplikazio hau linterna pizteko eta itzaltzeko, kamera atzitzeko baimena behar da.</string>
+    <string name="permission_camera_for_flashlight_not_granted">Ezin da linterna erabili kamerara sartu gabe.</string>
 
 </resources>

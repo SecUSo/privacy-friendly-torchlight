@@ -31,4 +31,7 @@
     <string name="version_number">Version</string>
     <string name="settings_category_general">Allgemein</string>
     <string name="nav_main">Hauptmenü</string>
+    <string name="permission_camera_for_flashlight_title">Kamera-Berechtigung erforderlich</string>
+    <string name="permission_camera_for_flashlight_description">Um diese App zum Ein- und Ausschalten Ihrer Taschenlampe zu verwenden, wird die Berechtigung zum Zugriff auf Ihre Kamera benötigt.</string>
+    <string name="permission_camera_for_flashlight_not_granted">Ohne Zugriff auf die Kamera kann die Taschenlampe nicht verwendet werden.</string>
 </resources>

@@ -40,5 +40,7 @@
 
     <string name="settings_category_general">General</string>
     <string name="nav_main">Main</string>
-
+    <string name="permission_camera_for_flashlight_title">Camera Permission needed</string>
+    <string name="permission_camera_for_flashlight_description">To use this app to turn your flashlight on and off, permission to access your camera is required.</string>
+    <string name="permission_camera_for_flashlight_not_granted">Can not use flashlight without access to the camera.</string>
 </resources>

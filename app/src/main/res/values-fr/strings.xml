@@ -32,5 +32,8 @@
     <string name="welcome_text">Cliquez sur le bouton central pour allumer ou éteindre la lampe de votre appareil.</string>
     <string name="settings_category_general">Général</string>
     <string name="nav_main">Menu principal</string>
+    <string name="permission_camera_for_flashlight_title">Autorisation de la caméra requise</string>
+    <string name="permission_camera_for_flashlight_description">Pour utiliser cette application afin d\'allumer et d\'éteindre votre lampe de poche, l\'autorisation d\'accéder à votre appareil photo est requise.</string>
+    <string name="permission_camera_for_flashlight_not_granted">Impossible d\'utiliser la lampe de poche sans accès à l\'appareil photo.</string>
 
 </resources>

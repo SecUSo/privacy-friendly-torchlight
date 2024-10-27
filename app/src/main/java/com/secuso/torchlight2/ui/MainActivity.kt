@@ -13,8 +13,6 @@
  */
 package com.secuso.torchlight2.ui
 
-import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Build.VERSION
@@ -25,7 +23,6 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.secuso.torchlight2.PFApplicationData
 import com.secuso.torchlight2.camera.CameraMarshmallow
@@ -33,6 +30,8 @@ import com.secuso.torchlight2.camera.CameraNormal
 import com.secuso.torchlight2.R
 import com.secuso.torchlight2.camera.ICamera
 import org.secuso.pfacore.model.DrawerElement
+import org.secuso.pfacore.model.permission.PFAPermission
+import org.secuso.pfacore.ui.declareUsage
 
 class MainActivity : BaseActivity() {
     private var flashState = false
@@ -42,8 +41,8 @@ class MainActivity : BaseActivity() {
     }
     private var mCamera: ICamera? = null
     private var isConnected = false
-    private val thisActivity: Activity = this
 
+    private lateinit var toggleCamera: () -> Unit
     override fun isActiveDrawerElement(element: DrawerElement) = element.name == ContextCompat.getString(this, R.string.nav_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +52,25 @@ class MainActivity : BaseActivity() {
 
         btnSwitch = findViewById<View>(R.id.btnSwitch) as ImageButton
         flashState = false
+
+        // Use the camera permission to toggle the camera.
+        // The permission request has to happen before the Activity has started,
+        // otherwise a crash occurs due to being unable to add a lifecycle listener by declareUsage
+        toggleCamera = PFAPermission.Camera.declareUsage(this) {
+            onGranted = {
+                if (mCamera!!.toggle(!flashState)) {
+                    flashState = !flashState
+                    btnSwitch!!.setImageResource(if (flashState) R.drawable.ic_power_on else R.drawable.ic_power_off)
+                }
+            }
+            onDenied = {
+                Toast.makeText(this@MainActivity, ContextCompat.getString(this@MainActivity, R.string.permission_camera_for_flashlight_not_granted), Toast.LENGTH_SHORT).show()
+            }
+            showRationale = {
+                rationaleTitle = ContextCompat.getString(this@MainActivity, R.string.permission_camera_for_flashlight_title)
+                rationaleText = ContextCompat.getString(this@MainActivity, R.string.permission_camera_for_flashlight_description)
+            }
+        }
 
         findViewById<CheckBox>(R.id.cbPause).apply {
             isChecked = closeOnPause.value
@@ -85,44 +103,12 @@ class MainActivity : BaseActivity() {
         // set up camera
         setUpCamera()
 
-        btnSwitch!!.setOnClickListener(View.OnClickListener { // can we have permissions that are revoked?
-            if (VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                // check if we have the permission we need -> if not request it and turn on the light afterwards
-                if (ContextCompat.checkSelfPermission(thisActivity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(thisActivity, arrayOf(Manifest.permission.CAMERA), 0)
-                    return@OnClickListener
-                }
-            }
-            toggleCamera(!flashState)
-        })
+        btnSwitch!!.setOnClickListener { toggleCamera() }
     }
 
     private fun setUpCamera() {
         mCamera!!.init(this)
         isConnected = true
-    }
-
-    private fun toggleCamera(enable: Boolean) {
-        if (mCamera!!.toggle(enable)) {
-            flashState = enable
-            btnSwitch!!.setImageResource(if (enable) R.drawable.ic_power_on else R.drawable.ic_power_off)
-        }
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when (requestCode) {
-            0 -> {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // yay, we got the permission -> turn on the light!
-                    toggleCamera(!flashState)
-                } else {
-                    Toast.makeText(this, "Can not use flashlight without access to the camera.", Toast.LENGTH_SHORT).show()
-                    // permission denied, boo!
-                }
-            }
-        }
     }
 
     override fun onStop() {
