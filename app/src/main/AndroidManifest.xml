@@ -19,6 +19,15 @@
             android:screenOrientation="portrait"
             android:theme="@style/PrivacyFriendlyCoreTheme.NoActionBar">
         </activity>
+
+        <service xmlns:tools="http://schemas.android.com/tools"
+            android:name="org.secuso.pfacore.backup.PFABackupService"
+            android:exported="false"
+            tools:node="remove">
+            <intent-filter>
+                <action android:name="org.secuso.privacyfriendlybackup.api.pfa.PFAAuthService" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
