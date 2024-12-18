@@ -8,10 +8,6 @@
     <string name="pause">turn off on app minimize or standby</string>
 
     <string name="app_name_long">Privacy Friendly Flashlight</string>
-    <string name="okay">Okay</string>
-    <string name="viewhelp">View Help</string>
-    <string name="action_help">Help</string>
-    <string name="action_about">About</string>
     <string name="welcome">Welcome</string>
 
     <!--###HELP###-->
@@ -20,16 +16,6 @@
     <string name="help_permissions_heading">Camera permission</string>
     <string name="help_permissions_description">The camera permission is needed to control the camera flashlight. If this permission is not given, the app will not operate properly.</string>
     <string name="help_intro">This is a very simple application to control your device\'s flashlight. Tap the button on the starting screen to toggle it on and off.</string>
-
-    <!--###ABOUT###-->
-    <string name="about">About</string>
-    <string name="version_number">Version</string>
-    <string name="about_author">Authors: </string>
-
-    <string name="about_author_contributors">and contributors.</string>
-    <string name="about_affiliation">In affiliation with</string>
-    <string name="privacy_friendly">This application belongs to the Privacy Friendly Apps group developed by Karlsruhe Institute of Technology. Source code is licensed under GPLv3. Images copyright KIT and Google Inc.</string>
-    <string name="more_info">More information can be found on:</string>
 
     <string name="welcome_text">Click the flashlight button to toggle your phone\'s light on and off.</string>
     <string name="settings_category_general">General</string>
