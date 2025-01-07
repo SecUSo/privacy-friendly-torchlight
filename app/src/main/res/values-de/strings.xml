@@ -7,26 +7,18 @@
     <string name="description">Um das Licht ein/aus zu schalten, berühren Sie die obige Fläche.</string>
     <string name="pause">Ausschalten beim Minimieren der App oder Standby</string>
 
-    <string name="about_author">Autoren:</string>
-    <string name="about_affiliation">In Zusammenarbeit mit:</string>
-
-    <string name="about">Über</string>
-
-    <string name="more_info">Mehr Informationen unter:</string>
     <string name="app_name_long">Privacy friendly Torchlight</string>
-    <string name="about_author_contributors">und Mitwirkende.</string>
-    <string name="action_about">Über</string>
-    <string name="action_help">Hilfe</string>
     <string name="help">Allgemein</string>
     <string name="help_privacy_heading">Datenschutzinformationen</string>
     <string name="help_permissions_heading">Kamera Berechtigung</string>
     <string name="help_permissions_description">Die Kamera Berechtigung wird benötigt um das Licht der Kamera zu kontrollieren. Wenn diese Berechtigung nicht gegeben wird, funktioniert die Anwendung nicht ordnungsgemäß.</string>
     <string name="help_intro">Dies ist eine sehr simple Anwendung um das Licht der Kamera zu kontrollieren. Drücke auf den Knopf im Hauptbildschirm um das Licht an und aus zu schalten.</string>
 
-    <string name="okay">Okay</string>
-    <string name="viewhelp">Siehe Hilfe</string>
     <string name="welcome">Willkommen</string>
     <string name="welcome_text">Drücke auf den Taschenlampen-Knopf um die Taschanlampe an und aus zu schalten.</string>
-    <string name="privacy_friendly">Diese App gehört zur Gruppe der Privacy Friendly Apps entwickelt vom Karlsruher Institut für Technologie. Quelltext lizenziert unter GPLv3. Bilder copyright KIT und Google Inc.</string>
-    <string name="version_number">Version</string>
+    <string name="settings_category_general">Allgemein</string>
+    <string name="nav_main">Hauptmenü</string>
+    <string name="permission_camera_for_flashlight_title">Kamera-Berechtigung erforderlich</string>
+    <string name="permission_camera_for_flashlight_description">Um diese App zum Ein- und Ausschalten Ihrer Taschenlampe zu verwenden, wird die Berechtigung zum Zugriff auf Ihre Kamera benötigt.</string>
+    <string name="permission_camera_for_flashlight_not_granted">Ohne Zugriff auf die Kamera kann die Taschenlampe nicht verwendet werden.</string>
 </resources>
