@@ -13,6 +13,11 @@ import org.secuso.pfacore.ui.preferences.appPreferences
 import org.secuso.pfacore.ui.preferences.settings.DeviceInformationOnErrorReport
 import org.secuso.pfacore.ui.preferences.settings.PreferenceFirstTimeLaunch
 import org.secuso.pfacore.ui.preferences.settings.SettingThemeSelector
+import org.secuso.pfacore.ui.preferences.settings.appearance
+import org.secuso.pfacore.ui.preferences.settings.general
+import org.secuso.pfacore.ui.preferences.settings.preferenceFirstTimeLaunch
+import org.secuso.pfacore.ui.preferences.settings.settingDeviceInformationOnErrorReport
+import org.secuso.pfacore.ui.preferences.settings.settingThemeSelector
 import org.secuso.pfacore.ui.tutorial.buildTutorial
 
 class PFApplicationData private constructor(context: Context) {
@@ -27,7 +32,7 @@ class PFApplicationData private constructor(context: Context) {
 
     private val preferences = appPreferences(context) {
         preferences {
-            firstTimeLaunch = PreferenceFirstTimeLaunch().build().invoke(this)
+            firstTimeLaunch = preferenceFirstTimeLaunch
             closeOnPause = preference {
                 key = "closeOnPause"
                 default = false
@@ -35,9 +40,9 @@ class PFApplicationData private constructor(context: Context) {
             }
         }
         settings {
-            category(ContextCompat.getString(context, R.string.settings_category_general)) {
-                theme = SettingThemeSelector().build().invoke(this)
-                includeDeviceDataInReport = DeviceInformationOnErrorReport().build().invoke(this)
+            general {
+                theme = settingThemeSelector
+                includeDeviceDataInReport = settingDeviceInformationOnErrorReport
             }
         }
     }

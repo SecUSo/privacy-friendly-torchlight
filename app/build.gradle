@@ -27,7 +27,7 @@ android {
 
             postprocessing {
                 removeUnusedCode true
-                removeUnusedResources true
+                shrinkResources true
                 obfuscate false
                 optimizeCode true
             }
