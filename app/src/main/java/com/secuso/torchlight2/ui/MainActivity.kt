@@ -28,6 +28,7 @@ import com.secuso.torchlight2.camera.CameraMarshmallow
 import com.secuso.torchlight2.camera.CameraNormal
 import com.secuso.torchlight2.R
 import com.secuso.torchlight2.camera.ICamera
+import com.secuso.torchlight2.checkGoodbyeGoogle
 import org.secuso.pfacore.model.DrawerElement
 import org.secuso.pfacore.model.permission.PFAPermission
 import org.secuso.pfacore.ui.declareUsage
@@ -77,6 +78,7 @@ class MainActivity : BaseActivity() {
         }
 
         init()
+        checkGoodbyeGoogle(this, layoutInflater)
     }
 
     private fun init() {
